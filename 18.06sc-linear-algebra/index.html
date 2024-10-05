@@ -1,0 +1,250 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link
+      id="favicon"
+      rel="shortcut icon"
+      type="image/png"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAE9mlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgOS4xLWMwMDIgNzkuYTZhNjM5NjhhLCAyMDI0LzAzLzA2LTExOjUyOjA1ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjUuMTEgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDI0LTA5LTEwVDAyOjQxOjMxLTA0OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNC0wOS0xMFQwMjo0NjoyNC0wNDowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNC0wOS0xMFQwMjo0NjoyNC0wNDowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ZWE5NTUxYjAtYTdhMS00MmJkLTk0ZGQtMDM1MjczYjRjMTdmIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOmVhOTU1MWIwLWE3YTEtNDJiZC05NGRkLTAzNTI3M2I0YzE3ZiIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmVhOTU1MWIwLWE3YTEtNDJiZC05NGRkLTAzNTI3M2I0YzE3ZiI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ZWE5NTUxYjAtYTdhMS00MmJkLTk0ZGQtMDM1MjczYjRjMTdmIiBzdEV2dDp3aGVuPSIyMDI0LTA5LTEwVDAyOjQxOjMxLTA0OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjUuMTEgKE1hY2ludG9zaCkiLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+UfhkaQAAAJNJREFUaIHtlDsKgDAQBY14DsHe+5/EXvAisbUQ8Zth40wXwpId8ngp59xEptse+mHctVnmKZVZ5zotvcBTFKBRgCZVVaN3Ies3fIQUoFGApq4aLV2Hb7wXPkIK0ChAY40+mXuD8BFSgEYBmv/U6Bd3R4udnQsfIQVoFKCxRom77Tl8hBSgUYAmfI2G/wEFaBSgWQGALFlRMTDfMAAAAABJRU5ErkJggg=="
+    />
+
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        loader: { load: ["input/asciimath"] },
+        asciimath: {
+          delimiters: [
+            ["<#math-begin>", "<#math-end>"],
+            ["`", "`"],
+          ],
+        },
+      };
+    </script>
+
+    <script
+      src="https://cdn.plot.ly/plotly-2.35.2.min.js"
+      charset="utf-8"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/sakura.css/css/sakura.css"
+      type="text/css"
+    />
+    <style>
+      section {
+        margin: 2rem 0;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eaeaea;
+      }
+      section:has(hr:last-child) {
+        /* hr at the bottom, so remove light border */
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        hr {
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Linear Algebra</h1>
+      <h6>
+        MIT OpenCourseWare -
+        <a
+          target="mit-ocw-18-06sc"
+          href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/"
+          >18.06SC &#128279;</a
+        >
+      </h6>
+      <i>michael@chisari.us</i>
+    </header>
+
+    <h2>Introduction</h2>
+    <introduction-text>
+      <p align="justify">
+        &emsp;Using mathjax+asciimath for formulas and plotly.js and will
+        consider latex+tikz if and when I need more complicated layouts.
+        <br /><br />
+        &emsp; It is a long established fact that a reader will be distracted by
+        the readable content of a page when looking at its layout. The point of
+        using Lorem Ipsum is that it has a more-or-less normal distribution of
+        letters, as opposed to using 'Content here, content here', making it
+        look like readable English. Many desktop publishing packages and web
+        page editors now use Lorem Ipsum as their default model text, and a
+        search for 'lorem ipsum' will uncover many web sites still in their
+        infancy. Various versions have evolved over the years, sometimes by
+        accident, sometimes on purpose (injected humour and the like).
+      </p>
+    </introduction-text>
+
+    <nav>
+      <h3>Table of Contents</h3>
+      <details open>
+        <summary>
+          <b>Unit I: Ax = b and the Four Subspaces</b>
+        </summary>
+        <ol start="0">
+          <li><a href="#chapter-1">The Geometry of Linear Equations</a></li>
+          <li>An Overview of Key Ideas</li>
+          <li>Elimination with Matrices</li>
+          <li>Multiplication and Inverse Matrices</li>
+          <li>Factorization into A = LU</li>
+          <li>Transposes, Permutations, Vector Spaces</li>
+          <li>Column Space and Nullspace</li>
+          <li>Solving Ax = 0: Pivot Variables, Special Solutions</li>
+          <li>Solving Ax = b: Row Reduced Form R</li>
+          <li>Independence, Basis and Dimension</li>
+          <li>The Four Fundamental Subspaces</li>
+          <li>Matrix Spaces; Rank 1; Small World Graphs</li>
+          <li>Graphs, Networks, Incidence Matrices</li>
+          <li>Exam 1 Review</li>
+          <li>Exam 1</li>
+        </ol>
+      </details>
+      <details>
+        <summary>
+          <b>Unit II: Least Squares, Determinants and Eigenvalues</b>
+        </summary>
+        <ol start="15">
+          <li>Orthogonal Vectors and Subspaces</li>
+          <li>Projections onto Subspaces</li>
+          <li>Projection Matrices and Least Squares</li>
+          <li>Orthogonal Matrices and Gram-Schmidt</li>
+          <li>Properties of Determinants</li>
+          <li>Determinant Formulas and Cofactors</li>
+          <li>Cramer's Rule, Inverse Matrix and Volume</li>
+          <li>Eigenvalues and Eigenvectors</li>
+          <li>Diagonalization and Powers of A</li>
+          <li>Differential Equations and exp(At)</li>
+          <li>Markov Matrices; Fourier Series</li>
+          <li>Exam 2 Review</li>
+          <li>Exam 2</li>
+        </ol>
+      </details>
+      <details>
+        <summary>
+          <b>Unit III: Positive Definite Matrices and Applications</b>
+        </summary>
+        <ol start="28">
+          <li>Symmetric Matrices and Positive Definiteness</li>
+          <li>Complex Matrices; Fast Fourier Transform (FFT)</li>
+          <li>Positive Definite Matrices and Minima</li>
+          <li>Similar Matrices and Jordan Form</li>
+          <li>Singular Value Decomposition</li>
+          <li>Linear Transformations and their Matrices</li>
+          <li>Change of Basis; Image Compression</li>
+          <li>Left and Right Inverses; Pseudoinverse</li>
+          <li>Exam 3 Review</li>
+          <li>Exam 3</li>
+        </ol>
+      </details>
+      <details>
+        <summary>
+          <b>Finals</b>
+        </summary>
+        <ol start="38">
+          <li>Final Course Review</li>
+          <li>Final Exam</li>
+        </ol>
+      </details>
+    </nav>
+
+    <hr />
+
+    <main>
+      <chapter-one id="chapter-1">
+        <h3>1. The Geometry of Linear Equations</h3>
+        <sample-formulas>
+          <section>`(f(x+h)-f(x))/h`</section>
+          <section><#math-begin>vec(r) = [[3], [2]]<#math-end></section>
+          <section>
+            Answer is <#math-begin> sum_(i=1)^n i^3=((n(n+1))/2)^2 <#math-end>
+            <hr />
+          </section>
+          <section>
+            <#math-begin> A=[[a,b,c],[d,e,f]] <#math-end>
+            <br /><br />
+            <#math-begin> B=[[a,b,c],[d,e,f]] <#math-end>
+          </section>
+        </sample-formulas>
+
+        <div id="plotly-test">
+          <script>
+            var pointCount = 31;
+            var i, r;
+
+            var x = [
+              10.1219, 10.42579, 15.21396, 15.42468, 20.29639, 20.46268,
+              25.36298, 25.49156,
+            ];
+            var y = [
+              5.0545, 5.180104, 5.0545, 5.20337, 5.0545, 5.194271, 5.0545,
+              5.231627,
+            ];
+            var z = [
+              5.2713, 5.231409, 5.2713, 5.231409, 5.2713, 5.235852, 5.2713,
+              5.231627,
+            ];
+
+            var c = [];
+
+            Plotly.newPlot(
+              "plotly-test",
+              [
+                {
+                  type: "scatter3d",
+                  mode: "lines+markers",
+                  x: x,
+                  y: y,
+                  z: z,
+                  line: {
+                    width: 6,
+                    color: c,
+                    colorscale: "Viridis",
+                  },
+                  marker: {
+                    size: 3.5,
+                    color: c,
+                    colorscale: "Greens",
+                    cmin: -20,
+                    cmax: 50,
+                  },
+                },
+              ],
+              {
+                plot_bgcolor: "rgba(0,0,0,0)",
+                paper_bgcolor: "rgba(0,0,0,0)",
+              },
+            );
+          </script>
+        </div>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+      </chapter-one>
+    </main>
+  </body>
+</html>

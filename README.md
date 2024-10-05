@@ -1,2 +1,2 @@
 # mit-ocw
-MIT OpenCourseWare Course Notes, Assignments and Exams
+MIT OCW Notes, Assignments and Exams
