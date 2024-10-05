@@ -25,11 +25,24 @@
       };
     </script>
 
-    <script
-      src="https://cdn.plot.ly/plotly-2.35.2.min.js"
-      charset="utf-8"
-    ></script>
+    <!-- Code formatting (Golang, Python and Javascript) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/base16/gruvbox-dark-hard.min.css"
+      integrity="sha512-kCMzrI8UyzNgyq0JVxwb17xy9nRVhwyPBSTaRC1hiOCnbMKBv9vII61ZHD4EmHpc+o0o9trcRCRAk6j5vVft8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
 
+    <!-- Mathcell.js -->
+    <script src="https://cdn.jsdelivr.net/gh/paulmasson/mathcell@1.7.0/build/mathcell.js"></script>
+
+    <!-- Sakura classless css -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -58,6 +71,25 @@
           margin-bottom: 2rem;
         }
       }
+      pre:has(code) {
+        background: none;
+        code {
+          border-radius: 1rem;
+        }
+      }
+      .mathcell {
+        border: none;
+        width: 100%;
+        padding: 1em;
+        height: auto;
+        aspect-ratio: 1;
+        iframe {
+          width: 100%;
+          border: none !important;
+          filter: invert(88%) hue-rotate(180deg);
+          border-radius: 1rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -77,7 +109,7 @@
     <h2>Introduction</h2>
     <introduction-text>
       <p align="justify">
-        &emsp;Using mathjax+asciimath for formulas and plotly.js and will
+        &emsp;Using mathjax+asciimath for formulas and mathcell.js and will
         consider latex+tikz if and when I need more complicated layouts.
         <br /><br />
         &emsp; It is a long established fact that a reader will be distracted by
@@ -183,56 +215,59 @@
           </section>
         </sample-formulas>
 
-        <div id="plotly-test">
+        <div class="mathcell">
           <script>
-            var pointCount = 31;
-            var i, r;
+            var parent = document.currentScript.parentNode;
 
-            var x = [
-              10.1219, 10.42579, 15.21396, 15.42468, 20.29639, 20.46268,
-              25.36298, 25.49156,
-            ];
-            var y = [
-              5.0545, 5.180104, 5.0545, 5.20337, 5.0545, 5.194271, 5.0545,
-              5.231627,
-            ];
-            var z = [
-              5.2713, 5.231409, 5.2713, 5.231409, 5.2713, 5.235852, 5.2713,
-              5.231627,
-            ];
+            var id = generateId();
+            parent.id = id;
 
-            var c = [];
+            MathCell(id, [[]]);
 
-            Plotly.newPlot(
-              "plotly-test",
-              [
-                {
-                  type: "scatter3d",
-                  mode: "lines+markers",
-                  x: x,
-                  y: y,
-                  z: z,
-                  line: {
-                    width: 6,
-                    color: c,
-                    colorscale: "Viridis",
-                  },
-                  marker: {
-                    size: 3.5,
-                    color: c,
-                    colorscale: "Greens",
-                    cmin: -20,
-                    cmax: 50,
-                  },
-                },
-              ],
-              {
-                plot_bgcolor: "rgba(0,0,0,0)",
-                paper_bgcolor: "rgba(0,0,0,0)",
-              },
-            );
+            parent.update = function (id) {
+              data = [
+                parametric(
+                  (x) => [x, 0, (x - 2) ** 2 + 1],
+                  [2 - Math.sqrt(2), 2 + Math.sqrt(2)],
+                  { color: "black" },
+                ),
+                line(
+                  [
+                    [0, 0, 0],
+                    [4, 0, 0],
+                  ],
+                  { color: "black" },
+                ),
+                text("x", [4.25, 0, 0]),
+                line(
+                  [
+                    [0, 0, 0],
+                    [0, 0, 4],
+                  ],
+                  { color: "black" },
+                ),
+                text("z", [0, 0, 4.25]),
+                sphere(0.03, { color: "red", center: [2, 1, 0] }),
+                sphere(0.03, { color: "red", center: [2, -1, 0] }),
+                parametric((x, y) => [x, y, 0], [0, 4], [-2, 2], {
+                  color: "gray",
+                  opacity: 0.1,
+                  renderOrder: -1,
+                }),
+              ];
+
+              var config = {
+                type: "threejs",
+                frame: false,
+                viewpoint: [1, -1, 0],
+              };
+
+              evaluate(id, data, config);
+            };
+
+            parent.update(id);
           </script>
-        </div>
+        </div
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -244,6 +279,40 @@
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
+        <pre>
+        <code class="language-javascript">
+          function javascript(x) {
+          }
+        </code></pre>
+        <pre><code class="langauge-golang">
+        package main
+        import "fmt"
+
+        func sum(a []int, c chan int) {
+        	sum := 0
+        	for _, v := range a {
+        		sum += v
+        	}
+        	c <- sum // send sum to c
+        }
+        
+        func main() {
+        	a := []int{7, 2, 8, -9, 4, 0}
+        
+        	c := make(chan int)
+        	go sum(a[:len(a)/2], c)
+        	go sum(a[len(a)/2:], c)
+        	x, y := <-c, <-c // receive from c
+        
+        	fmt.Println(x, y, x+y)
+        }
+        </code></pre>
+        <pre><code class="language-python">
+          thislist = ["apple", "banana", "cherry"]
+          print(thislist)
+        </code></pre>
+
+>
       </chapter-one>
     </main>
   </body>
