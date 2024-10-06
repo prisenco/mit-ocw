@@ -56,6 +56,9 @@
       type="text/css"
     />
     <style>
+      :root {
+        --transparent: rgba(0, 0, 0, 0);
+      }
       section {
         margin: 2rem 0;
         padding: 1rem 0;
@@ -90,6 +93,54 @@
           border-radius: 1rem;
         }
       }
+
+      /* Written notes thumbnail + "lightbox" gallery */
+      written-notes {
+        width: calc(100% - 2em);
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        img {
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+        }
+        button,
+        button:hover,
+        button:focus,
+        button:active {
+          padding: 0;
+          margin: 0;
+          border: none;
+          outline: none;
+          background-color: var(--transparent);
+        }
+        dialog {
+          height: 90%;
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+          border: none;
+          img {
+            margin: 0 auto;
+            box-shadow: none;
+            height: calc(100% - 2rem);
+            overflow-y: hidden;
+          }
+          button,
+          button:hover,
+          button:hover,
+          button:active {
+            color: rgb(29, 32, 33);
+            font-weight: bold;
+          }
+        }
+        dialog:popover-open {
+          display: flex;
+          flex-direction: column;
+        }
+        dialog::backdrop {
+          background-color: rgba(0, 0, 0, 0.8);
+          backdrop-filter: blur(10px);
+        }
+      }
     </style>
   </head>
   <body>
@@ -109,9 +160,9 @@
     <h2>Introduction</h2>
     <introduction-text>
       <p align="justify">
-        &emsp;Using mathjax+asciimath for formulas and mathcell.js and will
-        consider latex+tikz if and when I need more complicated layouts.
-        <br /><br />
+        &emsp;Using <a href="https://asciimath.org">AsciiMath</a> for formulas
+        and <a href="https://mathcell.org">MathCell</a> and will consider
+        latex+tikz if and when I need more complicated layouts. <br /><br />
         &emsp; It is a long established fact that a reader will be distracted by
         the readable content of a page when looking at its layout. The point of
         using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -267,7 +318,7 @@
 
             parent.update(id);
           </script>
-        </div
+        </div>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -312,7 +363,25 @@
           print(thislist)
         </code></pre>
 
->
+        <!-- thumbnail image wrapped in a link -->
+        <h6>Written notes</h6>
+        <written-notes>
+          <button popovertarget="example-1">
+            <img src="./written-notes/example-1.th.png" />
+          </button>
+          <dialog id="example-1" popover>
+            <img src="./written-notes/example-1.png" />
+            <button popovertarget="example-1">close</button>
+          </dialog>
+
+          <button popovertarget="example-2">
+            <img src="./written-notes/example-2.th.png" />
+          </button>
+          <dialog id="example-2" popover>
+            <img src="./written-notes/example-2.png" />
+            <button popovertarget="example-2">close</button>
+          </dialog>
+        </written-notes>
       </chapter-one>
     </main>
   </body>
