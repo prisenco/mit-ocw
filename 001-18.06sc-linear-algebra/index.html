@@ -83,7 +83,7 @@
       .mathcell {
         border: none;
         width: 100%;
-        padding: 1em;
+        padding: 0 1em 1em 1em;
         height: auto;
         aspect-ratio: 1;
         iframe {
@@ -141,6 +141,19 @@
           backdrop-filter: blur(10px);
         }
       }
+
+      /* Justify all paragraphs */
+      p {
+        text-align: justify;
+      }
+
+      /* Push up arrow to right on chapter note headers */
+      chapter-notes {
+        h3 {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
     </style>
   </head>
   <body>
@@ -159,19 +172,47 @@
 
     <h2>Introduction</h2>
     <introduction-text>
-      <p align="justify">
-        &emsp;Using <a href="https://asciimath.org">AsciiMath</a> for formulas
-        and <a href="https://mathcell.org">MathCell</a> and will consider
-        latex+tikz if and when I need more complicated layouts. <br /><br />
-        &emsp; It is a long established fact that a reader will be distracted by
-        the readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using 'Content here, content here', making it
-        look like readable English. Many desktop publishing packages and web
-        page editors now use Lorem Ipsum as their default model text, and a
-        search for 'lorem ipsum' will uncover many web sites still in their
-        infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like).
+      <p>
+        &emsp;I'm starting with Linear Algebra as my first course. Even though
+        the formal prerequisites for this are single variable and multivariable
+        calculus (which I have taken before, albeit a long time ago), I want to
+        start here because the only real prerequisite is basic algebra, which I
+        find interesting in itself but also because it has clear applications in
+        graphics programming and machine learning. I'm sure I'll run into
+        concepts I'll have to either learn or relearn along the way, and I'll
+        include my work for those as I encounter them.
+      </p>
+      <p>
+        <i>
+          Note: Technically this isn't my first course. If you snoop my github
+          history, I got a day into
+          <b>
+            6.0001 - Introduction To Computer Science And Programming In Python
+          </b>
+          but found it too remedial and didn't stick with it. I'll probably go
+          back and do it using in C to add extra challenge.
+        </i>
+      </p>
+      <p>
+        I'll be using the
+        <a href="https://en.wikipedia.org/wiki/Learning_by_teaching"
+          >Feynman Technique</a
+        >
+        as best I can to reinforce what I learn and if all goes well this can
+        become a resource for other self-learners to supplement MIT
+        OpenCourseWare.
+      </p>
+      <p>
+        &emsp;This course will be a test ground for ways to present my notes.
+        I've settled on using
+        <a href="https://asciimath.org">AsciiMath</a> for formulas and
+        <a href="https://mathcell.org">MathCell</a> and will consider latex+tikz
+        if and when I need more complicated layouts. I'll also be working out
+        how to implement and solve these formulas using Go code (and
+        occasionally Javscript or Python) to get familiar with how they can be
+        applied to programming. I'm using
+        <a href="https://highlightjs.org">Highlight.js</a> for code syntax
+        highlighting.
       </p>
     </introduction-text>
 
@@ -250,21 +291,46 @@
     <hr />
 
     <main>
-      <chapter-one id="chapter-1">
-        <h3>1. The Geometry of Linear Equations</h3>
-        <sample-formulas>
-          <section>`(f(x+h)-f(x))/h`</section>
-          <section><#math-begin>vec(r) = [[3], [2]]<#math-end></section>
-          <section>
-            Answer is <#math-begin> sum_(i=1)^n i^3=((n(n+1))/2)^2 <#math-end>
-            <hr />
-          </section>
-          <section>
-            <#math-begin> A=[[a,b,c],[d,e,f]] <#math-end>
-            <br /><br />
-            <#math-begin> B=[[a,b,c],[d,e,f]] <#math-end>
-          </section>
-        </sample-formulas>
+      <chapter-notes id="chapter-1">
+        <h3>
+          <span>1. The Geometry of Linear Equations</span><a href="#">&uarr;</a>
+        </h3>
+        <p>This is easy.</p>
+        <p>Starting with three equations.</p>
+
+        <section>
+          <#math-begin>2x - y = 0<#math-end> <br />
+          <#math-begin>-x + 2y - z = -1<#math-end> <br />
+          <#math-begin>-3y + 4z = 4<#math-end> <br />
+        </section>
+
+        <p>
+          We need to normalize (is that the word?) these formulas so they can
+          easily be mapped to a matrix.
+        </p>
+
+        <section>
+          <#math-begin>2x - y + 0z = 0<#math-end> <br />
+          <#math-begin>-x + 2y - z = -1<#math-end> <br />
+          <#math-begin>0z - 3y + 4z = 4<#math-end> <br />
+        </section>
+
+        <p>We can now easily put this in matrix form</p>
+
+        <section>
+          <#math-begin> A=[[2,-1,0],[-1,2,-3],[0,-1, 4]] <#math-end>
+          <#math-begin> B=[[0],[-1],[4]] <#math-end>
+        </section>
+
+        <p>
+          Here are the three planes visualized. We create an isosurface with the
+          function representing each plane. We have to move the RHS of the
+          equation to the left in order to make it code friendly.
+        </p>
+        <p>
+          (I won't put the code here, view the source code of this website and
+          search for this text and the code is right below.
+        </p>
 
         <div class="mathcell">
           <script>
@@ -277,11 +343,6 @@
 
             parent.update = function (id) {
               data = [
-                parametric(
-                  (x) => [x, 0, (x - 2) ** 2 + 1],
-                  [2 - Math.sqrt(2), 2 + Math.sqrt(2)],
-                  { color: "black" },
-                ),
                 line(
                   [
                     [0, 0, 0],
@@ -293,18 +354,58 @@
                 line(
                   [
                     [0, 0, 0],
+                    [0, 4, 0],
+                  ],
+                  { color: "black" },
+                ),
+                text("y", [0, 4.25, 0]),
+                line(
+                  [
+                    [0, 0, 0],
                     [0, 0, 4],
                   ],
                   { color: "black" },
                 ),
                 text("z", [0, 0, 4.25]),
-                sphere(0.03, { color: "red", center: [2, 1, 0] }),
-                sphere(0.03, { color: "red", center: [2, -1, 0] }),
-                parametric((x, y) => [x, y, 0], [0, 4], [-2, 2], {
-                  color: "gray",
-                  opacity: 0.1,
-                  renderOrder: -1,
-                }),
+                isosurface(
+                  (x, y, z) => {
+                    // 2x - y
+                    return 2 * x - y;
+                  },
+                  [-4, 4],
+                  [-4, 4],
+                  [-4, 4],
+                  {
+                    color: "red",
+                    opacity: 0.1,
+                  },
+                ),
+                isosurface(
+                  (x, y, z) => {
+                    // -x + 2y - z = -1
+                    return -1 * x + 2 * y - z + 1;
+                  },
+                  [-4, 4],
+                  [-4, 4],
+                  [-4, 4],
+                  {
+                    color: "green",
+                    opacity: 0.1,
+                  },
+                ),
+                isosurface(
+                  (x, y, z) => {
+                    // -3y + 4z = 4
+                    return -3 * y + 4 * z - 4;
+                  },
+                  [-4, 4],
+                  [-4, 4],
+                  [-4, 4],
+                  {
+                    color: "blue",
+                    opacity: 0.1,
+                  },
+                ),
               ];
 
               var config = {
@@ -319,48 +420,15 @@
             parent.update(id);
           </script>
         </div>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
-        <pre>
-        <code class="language-javascript">
-          function javascript(x) {
-          }
-        </code></pre>
-        <pre><code class="langauge-golang">
-        package main
-        import "fmt"
 
-        func sum(a []int, c chan int) {
-        	sum := 0
-        	for _, v := range a {
-        		sum += v
-        	}
-        	c <- sum // send sum to c
-        }
-        
-        func main() {
-        	a := []int{7, 2, 8, -9, 4, 0}
-        
-        	c := make(chan int)
-        	go sum(a[:len(a)/2], c)
-        	go sum(a[len(a)/2:], c)
-        	x, y := <-c, <-c // receive from c
-        
-        	fmt.Println(x, y, x+y)
-        }
-        </code></pre>
-        <pre><code class="language-python">
-          thislist = ["apple", "banana", "cherry"]
-          print(thislist)
+        <p>
+          This is cool to look at but only makes it slightly easier to
+          visualize.
+        </p>
+
+        <!-- code highlighting -->
+        <pre><code class="language-golang">
+matrix := [3][3]int{{2, -1, 0}, {-1, 2, -1}, {0, -3, 4}}
         </code></pre>
 
         <!-- thumbnail image wrapped in a link -->
@@ -382,7 +450,7 @@
             <button popovertarget="example-2">close</button>
           </dialog>
         </written-notes>
-      </chapter-one>
+      </chapter-notes>
     </main>
   </body>
 </html>
