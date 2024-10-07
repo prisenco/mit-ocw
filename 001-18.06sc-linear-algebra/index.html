@@ -429,9 +429,87 @@
           we either screwed up on the math or screwed up coding the graph.
         </p>
 
+        <p>Let's create a visualization of the column view.</p>
+
+        <p>
+          <#math-begin> x[[2],[-1],[0]] + y[[-1],[2],[-3]] + z[[0],[-1],[4]] =
+          [[2],[-1],[0]] <#math-end>
+        </p>
+
+        <div class="mathcell">
+          <script>
+            var parent = document.currentScript.parentNode;
+
+            var id = generateId();
+            parent.id = id;
+
+            MathCell(id, [[]]);
+
+            parent.update = function (id) {
+              data = [
+                line(
+                  [
+                    [0, 0, 0],
+                    [4, 0, 0],
+                  ],
+                  { color: "black" },
+                ),
+                text("x", [4.25, 0, 0]),
+                line(
+                  [
+                    [0, 0, 0],
+                    [0, 4, 0],
+                  ],
+                  { color: "black" },
+                ),
+                text("y", [0, 4.25, 0]),
+                line(
+                  [
+                    [0, 0, 0],
+                    [0, 0, 4],
+                  ],
+                  { color: "black" },
+                ),
+                text("z", [0, 0, 4.25]),
+                line(
+                  [
+                    [0, 0, 0],
+                    [2, -1, 0],
+                  ],
+                  { color: "red" },
+                ),
+                line(
+                  [
+                    [0, 0, 0],
+                    [-1, 2, -3],
+                  ],
+                  { color: "green" },
+                ),
+                line(
+                  [
+                    [0, 0, 0],
+                    [0, -1, 4],
+                  ],
+                  { color: "blue" },
+                ),
+              ];
+
+              var config = {
+                type: "threejs",
+                frame: false,
+                viewpoint: [1, -1, 0],
+              };
+
+              evaluate(id, data, config);
+            };
+
+            parent.update(id);
+          </script>
+        </div>
+
         <p>
           In the lecture, Strang points out that the result and one of the
-          columsn are the same, which means that the solution is easy: Zero out
+          columns are the same, which means that the solution is easy: Zero out
           <#math-begin>x<#math-end> and <#math-begin>y<#math-end> and set
           <#math-begin>z<#math-end> to 1. So the solution becomes
           <#math-begin>(0, 0, 1)<#math-end>
