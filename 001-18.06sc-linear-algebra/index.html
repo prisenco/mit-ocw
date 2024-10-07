@@ -328,8 +328,8 @@
           equation to the left in order to make it code friendly.
         </p>
         <p>
-          (I won't put the code here, view the source code of this website and
-          search for this text and the code is right below.
+          (View the source of this website and search for this text and the code
+          is right below.)
         </p>
 
         <div class="mathcell">
@@ -406,6 +406,7 @@
                     opacity: 0.1,
                   },
                 ),
+                sphere(0.06, { color: "red", center: [0, 0, 1] }),
               ];
 
               var config = {
@@ -423,7 +424,17 @@
 
         <p>
           This is cool to look at but only makes it slightly easier to
-          visualize.
+          visualize. It's useful to check the work though, because once we add a
+          point at the solution, the planes should line up there. If they don't,
+          we either screwed up on the math or screwed up coding the graph.
+        </p>
+
+        <p>
+          In the lecture, Strang points out that the result and one of the
+          columsn are the same, which means that the solution is easy: Zero out
+          <#math-begin>x<#math-end> and <#math-begin>y<#math-end> and set
+          <#math-begin>z<#math-end> to 1. So the solution becomes
+          <#math-begin>(0, 0, 1)<#math-end>
         </p>
 
         <!-- code highlighting -->
