@@ -295,7 +295,10 @@
         <h3>
           <span>1. The Geometry of Linear Equations</span><a href="#">&uarr;</a>
         </h3>
-        <p>This is easy.</p>
+        <p>
+          The lecture almost makes it seem easy. But I'm sure that's false
+          confidence talking.
+        </p>
         <p>Starting with three equations.</p>
 
         <section>
@@ -305,8 +308,8 @@
         </section>
 
         <p>
-          We need to normalize (is that the word?) these formulas so they can
-          easily be mapped to a matrix.
+          We need to normalize (is that the word? standardize?) these formulas
+          so they can easily be mapped to a matrix.
         </p>
 
         <section>
@@ -492,6 +495,7 @@
                   ],
                   { color: "blue" },
                 ),
+                sphere(0.06, { color: "red", center: [0, 0, 1] }),
               ];
 
               var config = {
@@ -512,8 +516,100 @@
           columns are the same, which means that the solution is easy: Zero out
           <#math-begin>x<#math-end> and <#math-begin>y<#math-end> and set
           <#math-begin>z<#math-end> to 1. So the solution becomes
-          <#math-begin>(0, 0, 1)<#math-end>
+          <#math-begin>(0, 0, 1)<#math-end>. Answers have been marked in above
+          graphs.
         </p>
+
+        <p>Solve for every b</p>
+
+        <p>Nine dimensions</p>
+
+        <h6>Recitation</h6>
+
+        <p>
+          So this is embarassing because I tried to use the substitution method
+          on the first problem and failed badly. I had to look up how to do it
+          to see what I was doing wrong.
+        </p>
+
+        <p>
+          The first attempt I just completely went off the rails. The second
+          time I used the right method, but forgot a coefficient. This was
+          always my achilles heel in math. And probably why I liked coding
+          better. There's no compiler or unit tests for handwritten math and it
+          takes a lot longer to get output. I also try and work too quickly, so
+          taking the time to slow down and reason it out thoroughly is a skill I
+          hope to build from this class.
+        </p>
+
+        <p>This is the equation</p>
+
+        <#math-begin>2x+y=3<#math-end><br />
+        <#math-begin>x-2y=-1<#math-end><br /><br />
+
+        <p>
+          The solution is <#math-begin>(1,1)<#math-end>, which is annoying in
+          how obvious it is. The instructor suggested using graphs, which would
+          have been a lot simpler and I wish I would have listened. Also good to
+          remember that I could have quickly evaluated this with just two points
+          from each equation.
+        </p>
+
+        <div class="mathcell">
+          <script>
+            var parent = document.currentScript.parentNode;
+
+            var id = generateId();
+            parent.id = id;
+
+            MathCell(id, []);
+
+            parent.update = function (id) {
+              var data = [];
+
+              data.push(
+                line(
+                  [
+                    [-4, 11],
+                    [4, -5],
+                  ],
+                  { color: "blue" },
+                ),
+                line(
+                  [
+                    [-4, -3 / 2],
+                    [4, 5 / 2],
+                  ],
+                  { color: "red" },
+                ),
+                point([1, 1], { color: "green", size: 2 }),
+                text("x", [4.25, 0]),
+                text("y", [0, 4.25]),
+              );
+
+              evaluate(id, data, { type: "svg", ticks: false });
+            };
+
+            parent.update(id);
+          </script>
+        </div>
+
+        <p>
+          So if I'm not mistaken, the row picture is about solving the equation
+          for the values of <#math-begin>x, y, ...<#math-end> and the column
+          picture is about resolving the coefficients, which I'm assuming allows
+          us to determine whether a system of equations has a solution? But the
+          matrix form seems to allow for both? I'm not entirely sure yet.
+        </p>
+
+        <h6>Reading</h6>
+
+        <p>
+          Lecture was a cakewalk compared to this. Approximately 35 pages of
+          reading. If I was an MIT student, I'd have a day to do it.
+        </p>
+
+        <p>Thankfully I am far from MIT material so I can take my time.</p>
 
         <!-- code highlighting -->
         <pre><code class="language-golang">
